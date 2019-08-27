@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8" />
@@ -39,12 +39,6 @@
             <a href="./../genero/GeneroWS?acao=list">
               <i class="tim-icons icon-tag"></i>
               <p>Genero</p>
-            </a>
-          </li>
-          <li>
-            <a href="./../classificacao/ClassificacaoWS?acao=list">
-              <i class="tim-icons icon-tag"></i>
-              <p>Classificação</p>
             </a>
           </li>
           <li>
