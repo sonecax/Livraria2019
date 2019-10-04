@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -18,6 +20,10 @@ import javax.persistence.OneToMany;
  * @author dappo
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name="Genero.findAll",query="SELECT g FROM Genero g"),
+    @NamedQuery(name="Genero.findFilter",query="SELECT g FROM Genero g WHERE g.nome LIKE :filtro")
+})
 public class Genero implements Serializable {
 
     @OneToMany(mappedBy = "genero")

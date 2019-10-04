@@ -3,7 +3,7 @@
 
 <div class="card ">
     <div class="card-header">
-        <h4 class="card-title">Genero</h4>
+        <h4 class="card-title">Autor</h4>
     </div>
     <div class="card-body">
         <a class="btn btn-primary btn-round text-center" href="add.jsp">
@@ -17,7 +17,13 @@
                             ID
                         </th>
                         <th>
-                            Genero
+                            Nome
+                        </th>
+                        <th>
+                            Nacionalidade
+                        </th>
+                        <th>
+                            Foto
                         </th>
                         <th>
                             Edita
@@ -32,6 +38,8 @@
                     <tr>
                         <td>${obj.id}</td>
                         <td>${obj.nome}</td>
+                        <td>${obj.nacionalidade}</td>
+                        <td>${obj.foto}</td>
                         <td>
                             <a class="btn btn-info btn-fab btn-icon btn-round" href="">
                                 <i class="tim-icons icon-pencil"></i>

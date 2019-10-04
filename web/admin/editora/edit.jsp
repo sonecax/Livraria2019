@@ -2,7 +2,7 @@
 <%@include file="../cabecalho.jsp" %>
 <div class="card">
     <div class="card-header">
-        <h5 class="title">Edita Genero</h5>
+        <h5 class="title">Adiciona Genero</h5>
     </div>
     <div class="card-body">
         <!--MODIFICAR PARA ADD-->

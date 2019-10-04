@@ -7,8 +7,6 @@ package util;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marcelosiedler
  */
-@WebServlet(urlPatterns = {"/UploadWS"})
+@WebServlet(urlPatterns = {"/admin/autor/UploadWS","/admin/editora/UploadWS"})
 public class UploadWS extends HttpServlet {
 
     /**
