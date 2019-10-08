@@ -23,6 +23,9 @@
                             Nacionalidade
                         </th>
                         <th>
+                            Data Nascimento
+                        </th>
+                        <th>
                             Foto
                         </th>
                         <th>
@@ -39,14 +42,15 @@
                         <td>${obj.id}</td>
                         <td>${obj.nome}</td>
                         <td>${obj.nacionalidade}</td>
-                        <td>${obj.foto}</td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${obj.datanasc}"></fmt:formatDate></td>
+                        <td><img src="../../arquivos/${obj.foto}" style="height: 40px;"></td>
                         <td>
-                            <a class="btn btn-info btn-fab btn-icon btn-round" href="">
+                            <a class="btn btn-info btn-fab btn-icon btn-round" href="AutorWS?txtAcao=edit&txtId=${obj.id}">
                                 <i class="tim-icons icon-pencil"></i>
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-primary btn-fab btn-icon btn-round" href="GeneroWS?txtAcao=del&txtId=${obj.id}">
+                            <a class="btn btn-primary btn-fab btn-icon btn-round" href="AutorWS?txtAcao=del&txtId=${obj.id}">
                                 <i class="tim-icons icon-trash-simple"></i>
                             </a>
                         </td>
@@ -57,14 +61,14 @@
         </div>
     </div>
     <div class="card-footer">
-
+        <c:if test="${msg != null}">
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-
+            ${msg}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <i class="tim-icons icon-simple-remove"></i>
             </button>
         </div>
-
+        </c:if>
     </div>
 </div>
 

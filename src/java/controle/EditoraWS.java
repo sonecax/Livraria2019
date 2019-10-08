@@ -5,8 +5,9 @@
  */
 package controle;
 
-import dao.GeneroDAO;
+import dao.EditoraDAO;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,13 +15,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Genero;
+import util.FormataData;
+import modelo.Editora;
 
 /**
  *
  * @author dappo
  */
-@WebServlet(name = "GeneroWS", urlPatterns = {"/admin/genero/GeneroWS"})
+@WebServlet(name = "EditoraWS", urlPatterns = {"/admin/editora/EditoraWS"})
 public class EditoraWS extends HttpServlet {
        
     @Override
@@ -30,9 +32,9 @@ public class EditoraWS extends HttpServlet {
         String acao = request.getParameter("txtAcao");
         RequestDispatcher destino;
         String pagina;
-        GeneroDAO dao = new GeneroDAO();
-        Genero obj;
-        List<Genero> generos;
+        EditoraDAO dao = new EditoraDAO();
+        Editora obj;
+        List<Editora> editoras;
         Boolean deucerto;
         String msg;
         
@@ -56,9 +58,9 @@ public class EditoraWS extends HttpServlet {
                 }else{
                     msg = "Problema ao excluir o genero " + obj.getNome();
                 }
-                generos = dao.listar();
+                editoras = dao.listar();
                 request.setAttribute("msg", msg);
-                request.setAttribute("lista", generos);
+                request.setAttribute("lista", editoras);
                 pagina = "list.jsp";
                 break;
             default:
@@ -66,18 +68,18 @@ public class EditoraWS extends HttpServlet {
                 String filtro = request.getParameter("txtFiltro");
                 if(filtro == null){
                     //lista todos
-                    generos = dao.listar();
+                    editoras = dao.listar();
                 }else{
                     //lista com filtro
                     try {                
-                        generos = dao.listar(filtro);
+                        editoras = dao.listar(filtro);
                     } catch (Exception ex) {
-                        generos = dao.listar();
+                        editoras = dao.listar();
                         msg = "Problema ao filtrar";
                         request.setAttribute("msg", msg);
                     }
                 }
-                request.setAttribute("lista", generos);
+                request.setAttribute("lista", editoras);
                 pagina = "list.jsp";
                 break;
         }
@@ -91,20 +93,26 @@ public class EditoraWS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //criar variaveis
-        Genero obj;
-        GeneroDAO dao = new GeneroDAO();
+        Editora obj;
+        EditoraDAO dao = new EditoraDAO();
         Boolean deucerto;
         String msg;
         String pagina;
         RequestDispatcher destino;
-        List<Genero> generos;
+        List<Editora> editoras;
         
         
-        //Receber dados
+         //Receber dados
         String id = request.getParameter("txtId");
-        String nome = request.getParameter("txtGenero");
+        String nome = request.getParameter("txtNome");
+        String endereco = request.getParameter("txtEndereco");
+        String telefone = request.getParameter("txtTelefone");
+        String data = request.getParameter("txtData");
+        String logo = request.getParameter("txtLogo");
+        
         
         //Tratar os dados (transformar os dados no formato solicitado)
+        Date fundacao = FormataData.formata(data, "yyyy-MM-dd");
         
         
         if(id != null){
@@ -112,17 +120,21 @@ public class EditoraWS extends HttpServlet {
            obj = dao.buscarPorChavePrimaria(Long.parseLong(id));
         }else{
             //cria um novo
-           obj = new Genero(); 
+           obj = new Editora(); 
         }
         
         //adicionar os dados recebidos
         obj.setNome(nome);
+        obj.setEndereco(endereco);
+        obj.setTelefone(telefone);
+        obj.setFundacao(fundacao);
+        obj.setLogo(logo);
         
         if(id != null){
             deucerto = dao.alterar(obj);
             pagina = "list.jsp";
-            generos = dao.listar();
-            request.setAttribute("lista", generos);
+            editoras = dao.listar();
+            request.setAttribute("lista", editoras);
             if(deucerto){
                 msg = obj.getNome() + " alterado com sucesso!";
             }else{

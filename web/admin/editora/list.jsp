@@ -3,7 +3,7 @@
 
 <div class="card ">
     <div class="card-header">
-        <h4 class="card-title">Genero</h4>
+        <h4 class="card-title">Editora</h4>
     </div>
     <div class="card-body">
         <a class="btn btn-primary btn-round text-center" href="add.jsp">
@@ -17,7 +17,19 @@
                             ID
                         </th>
                         <th>
-                            Genero
+                            Nome
+                        </th>
+                        <th>
+                            Endereço
+                        </th>
+                        <th>
+                            Telefone
+                        </th>
+                        <th>
+                            Fundação
+                        </th>
+                        <th>
+                            Logo
                         </th>
                         <th>
                             Edita
@@ -32,13 +44,17 @@
                     <tr>
                         <td>${obj.id}</td>
                         <td>${obj.nome}</td>
+                        <td>${obj.endereco}</td>
+                        <td>${obj.telefone}</td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy" value="${obj.fundacao}"></fmt:formatDate></td>
+                        <td><img src="../../arquivos/${obj.logo}" style="height: 40px;"></td>
                         <td>
-                            <a class="btn btn-info btn-fab btn-icon btn-round" href="">
+                            <a class="btn btn-info btn-fab btn-icon btn-round" href="EditoraWS?txtAcao=edit&txtId=${obj.id}">
                                 <i class="tim-icons icon-pencil"></i>
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-primary btn-fab btn-icon btn-round" href="GeneroWS?txtAcao=del&txtId=${obj.id}">
+                            <a class="btn btn-primary btn-fab btn-icon btn-round" href="EditoraWS?txtAcao=del&txtId=${obj.id}">
                                 <i class="tim-icons icon-trash-simple"></i>
                             </a>
                         </td>
@@ -49,14 +65,14 @@
         </div>
     </div>
     <div class="card-footer">
-
+        <c:if test="${msg != null}">
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-
+            ${msg}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <i class="tim-icons icon-simple-remove"></i>
             </button>
         </div>
-
+        </c:if>
     </div>
 </div>
 

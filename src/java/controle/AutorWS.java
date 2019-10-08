@@ -5,8 +5,9 @@
  */
 package controle;
 
-import dao.GeneroDAO;
+import dao.AutorDAO;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,13 +15,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Genero;
+import modelo.Autor;
+import util.FormataData;
 
 /**
  *
  * @author dappo
  */
-@WebServlet(name = "GeneroWS", urlPatterns = {"/admin/genero/GeneroWS"})
+@WebServlet(name = "AutorWS", urlPatterns = {"/admin/autor/AutorWS"})
 public class AutorWS extends HttpServlet {
        
     @Override
@@ -30,9 +32,9 @@ public class AutorWS extends HttpServlet {
         String acao = request.getParameter("txtAcao");
         RequestDispatcher destino;
         String pagina;
-        GeneroDAO dao = new GeneroDAO();
-        Genero obj;
-        List<Genero> generos;
+        AutorDAO dao = new AutorDAO();
+        Autor obj;
+        List<Autor> autores;
         Boolean deucerto;
         String msg;
         
@@ -56,9 +58,9 @@ public class AutorWS extends HttpServlet {
                 }else{
                     msg = "Problema ao excluir o genero " + obj.getNome();
                 }
-                generos = dao.listar();
+                autores = dao.listar();
                 request.setAttribute("msg", msg);
-                request.setAttribute("lista", generos);
+                request.setAttribute("lista", autores);
                 pagina = "list.jsp";
                 break;
             default:
@@ -66,18 +68,18 @@ public class AutorWS extends HttpServlet {
                 String filtro = request.getParameter("txtFiltro");
                 if(filtro == null){
                     //lista todos
-                    generos = dao.listar();
+                    autores = dao.listar();
                 }else{
                     //lista com filtro
                     try {                
-                        generos = dao.listar(filtro);
+                        autores = dao.listar(filtro);
                     } catch (Exception ex) {
-                        generos = dao.listar();
+                        autores = dao.listar();
                         msg = "Problema ao filtrar";
                         request.setAttribute("msg", msg);
                     }
                 }
-                request.setAttribute("lista", generos);
+                request.setAttribute("lista", autores);
                 pagina = "list.jsp";
                 break;
         }
@@ -91,38 +93,45 @@ public class AutorWS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //criar variaveis
-        Genero obj;
-        GeneroDAO dao = new GeneroDAO();
+        Autor obj;
+        AutorDAO dao = new AutorDAO();
         Boolean deucerto;
         String msg;
         String pagina;
         RequestDispatcher destino;
-        List<Genero> generos;
+        List<Autor> autores;
         
         
         //Receber dados
         String id = request.getParameter("txtId");
-        String nome = request.getParameter("txtGenero");
+        String nome = request.getParameter("txtNome");
+        String nacionalidade = request.getParameter("txtNacionalidade");
+        String data = request.getParameter("txtData");
+        String foto = request.getParameter("txtFoto");
+        
         
         //Tratar os dados (transformar os dados no formato solicitado)
-        
+        Date datanasc = FormataData.formata(data, "yyyy-MM-dd");
         
         if(id != null){
             //busca o que existe
            obj = dao.buscarPorChavePrimaria(Long.parseLong(id));
         }else{
             //cria um novo
-           obj = new Genero(); 
+           obj = new Autor(); 
         }
         
         //adicionar os dados recebidos
         obj.setNome(nome);
+        obj.setDatanasc(datanasc);
+        obj.setFoto(foto);
+        obj.setNacionalidade(nacionalidade);
         
         if(id != null){
             deucerto = dao.alterar(obj);
             pagina = "list.jsp";
-            generos = dao.listar();
-            request.setAttribute("lista", generos);
+            autores = dao.listar();
+            request.setAttribute("lista", autores);
             if(deucerto){
                 msg = obj.getNome() + " alterado com sucesso!";
             }else{

@@ -33,7 +33,7 @@
                         <td>${obj.id}</td>
                         <td>${obj.nome}</td>
                         <td>
-                            <a class="btn btn-info btn-fab btn-icon btn-round" href="">
+                            <a class="btn btn-info btn-fab btn-icon btn-round" href="GeneroWS?txtAcao=edit&txtId=${obj.id}">
                                 <i class="tim-icons icon-pencil"></i>
                             </a>
                         </td>
@@ -49,14 +49,14 @@
         </div>
     </div>
     <div class="card-footer">
-
-        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-            </button>
-        </div>
-
+        <c:if test="${msg != null}">
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                ${msg}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="tim-icons icon-simple-remove"></i>
+                </button>
+            </div>
+        </c:if>
     </div>
 </div>
 

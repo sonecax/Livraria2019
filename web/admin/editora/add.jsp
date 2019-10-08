@@ -1,16 +1,49 @@
 <%@include file="../cabecalho.jsp" %>
 <div class="card">
     <div class="card-header">
-        <h5 class="title">Adiciona Genero</h5>
+        <h5 class="title">Adiciona Editora</h5>
     </div>
     <div class="card-body">
         <!--MODIFICAR PARA ADD-->
-        <form action="GeneroWS" method="POST">
+        <form action="UploadWS" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="urldestino" value="EditoraWS">
             <div class="row">
-                <div class="col-md-5 pr-md-1">
+                <div class="col-md-12 pr-md-1">
                     <div class="form-group">
-                        <label>Genero</label>
-                        <input type="text" name="txtGenero" required class="form-control" placeholder="Genero" >
+                        <label>Nome</label>
+                        <input type="text" name="txtNome" required class="form-control" placeholder="Editora" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input type="text" name="txtEndereco" required class="form-control" placeholder="Endereço" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="text" name="txtTelefone" required class="form-control" placeholder="Telefone" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                        <label>Data de fundação</label>
+                        <input type="date" name="txtData" required class="form-control" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group-file">
+                        <label for="file">Logo</label>
+                        <input type="file" name="txtLogo" required class="form-control form-control-file">
                     </div>
                 </div>
             </div>
@@ -18,7 +51,7 @@
             <button class="btn btn-primary btn-round text-center" type="submit">
                 <i class="tim-icons icon-cloud-upload-94"></i> Salvar
             </button>
-            <a class="btn btn-primary btn-round text-center" href="GeneroWS?acao=list">
+            <a class="btn btn-primary btn-round text-center" href="EditoraWS?acao=list">
                 <i class="tim-icons icon-bullet-list-67"></i> Listar
             </a>
         </form>

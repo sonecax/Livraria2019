@@ -11,8 +11,16 @@
             <div class="row">
                 <div class="col-md-12 pr-md-1">
                     <div class="form-group">
+                        <label>id</label>
+                        <input readonly type="text" name="txtId" required class="form-control" placeholder="Autor" value="${obj.id}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" name="txtNome" required class="form-control" placeholder="Autor" >
+                        <input type="text" name="txtNome" required class="form-control" placeholder="Autor" value="${obj.nome}">
                     </div>
                 </div>
             </div>
@@ -20,7 +28,7 @@
                 <div class="col-md-12 pr-md-1">
                     <div class="form-group">
                         <label>Nacionalidade</label>
-                        <input type="text" name="txtNacionalidade" required class="form-control" placeholder="Nacionalidade" >
+                        <input type="text" name="txtNacionalidade" required class="form-control" placeholder="Nacionalidade" value="${obj.nacionalidade}" >
                     </div>
                 </div>
             </div>
@@ -28,7 +36,7 @@
                 <div class="col-md-12 pr-md-1">
                     <div class="form-group">
                         <label>Data de nascimento</label>
-                        <input type="date" name="txtNome" required class="form-control" >
+                        <input type="date" name="txtData" required class="form-control" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${obj.datanasc}"/>" >
                     </div>
                 </div>
             </div>
@@ -44,20 +52,20 @@
             <button class="btn btn-primary btn-round text-center" type="submit">
                 <i class="tim-icons icon-cloud-upload-94"></i> Salvar
             </button>
-            <a class="btn btn-primary btn-round text-center" href="GeneroWS?acao=list">
+            <a class="btn btn-primary btn-round text-center" href="AutorWS?acao=list">
                 <i class="tim-icons icon-bullet-list-67"></i> Listar
             </a>
         </form>
     </div>
     <div class="card-footer">
-        
+                <c:if test="${msg != null}">
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                ERRO
+                ${msg}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <i class="tim-icons icon-simple-remove"></i>
                 </button>
             </div>
-        
+                </c:if>
     </div>
 </div>
 </div>

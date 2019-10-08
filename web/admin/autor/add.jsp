@@ -27,7 +27,7 @@
                 <div class="col-md-12 pr-md-1">
                     <div class="form-group">
                         <label>Data de nascimento</label>
-                        <input type="date" name="txtNome" required class="form-control" >
+                        <input type="date" name="txtData" required class="form-control" >
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
             <button class="btn btn-primary btn-round text-center" type="submit">
                 <i class="tim-icons icon-cloud-upload-94"></i> Salvar
             </button>
-            <a class="btn btn-primary btn-round text-center" href="GeneroWS?acao=list">
+            <a class="btn btn-primary btn-round text-center" href="AutorWS?acao=list">
                 <i class="tim-icons icon-bullet-list-67"></i> Listar
             </a>
         </form>

@@ -11,13 +11,13 @@
                 <div class="col-md-3 pr-md-1">
                     <div class="form-group">
                         <label>Id</label>
-                        <input type="text" class="form-control" name="txtId" placeholder="Id" value="" readonly="true">
+                        <input type="text" class="form-control" name="txtId" placeholder="Id" value="${obj.id}" readonly="true">
                     </div>
                 </div>
                 <div class="col-md-5 pr-md-1">
                     <div class="form-group">
                         <label>Genero</label>
-                        <input type="text" class="form-control" name="txtGenero" placeholder="Genero" value="">
+                        <input type="text" class="form-control" name="txtGenero" placeholder="Genero" value="${obj.nome}">
                     </div>
                 </div>
             </div>
@@ -30,14 +30,14 @@
         </form>
     </div>
     <div class="card-footer">
-        
+        <c:if test="${msg != null}">
             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                ERRO
+                ${msg}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <i class="tim-icons icon-simple-remove"></i>
                 </button>
             </div>
-        
+        </c:if>
     </div>
 </div>
 </div>
