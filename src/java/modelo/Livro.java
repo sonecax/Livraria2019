@@ -41,6 +41,8 @@ public class Livro implements Serializable {
     private String foto2;
     private String foto3;
     
+    //private List<String> fotos;
+    
     @ManyToOne
     private Genero genero;
     @ManyToOne
