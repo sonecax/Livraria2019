@@ -18,6 +18,26 @@
             <div class="row">
                 <div class="col-md-12 pr-md-1">
                     <div class="form-group">
+                        <label>Genero</label>
+                        <select class="form-control">
+                            <option>Terror</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
+                        <label>Editora</label>
+                        <select class="form-control">
+                            <option>Editora</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pr-md-1">
+                    <div class="form-group">
                         <label>Paginas</label>
                         <input type="number" name="txtPagina" required class="form-control" placeholder="Paginas" >
                     </div>
